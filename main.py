@@ -1,5 +1,5 @@
 from src.category import Category
-from src.product import LawnGrass, Product, Smartphone
+from src.product import Product
 
 if __name__ == "__main__":
     product1 = Product(
