@@ -1,6 +1,9 @@
 class Product:
-    """ Класс для представления продукта."""
-    def __init__(self, name: str, description: str, price: float, quantity: int) -> None:
+    """Класс для представления продукта."""
+
+    def __init__(
+        self, name: str, description: str, price: float, quantity: int
+    ) -> None:
         """
         Инициализация объекта Product.
 
@@ -35,7 +38,7 @@ class Product:
         self.__price = new_price
 
     @classmethod
-    def new_product(cls, product_data: dict) -> 'Product':
+    def new_product(cls, product_data: dict) -> "Product":
         """
         Класс-метод для создания нового продукта из словаря.
 
@@ -53,7 +56,7 @@ class Product:
         """Строковое представление объекта Product."""
         return f"{self.name}, {self.price} руб. Остаток: {self.quantity} шт."
 
-    def __add__(self, other: 'Product') -> float:
+    def __add__(self, other: "Product") -> float:
         """Магический метод сложения двух продуктов."""
         if not isinstance(other, Product):
             raise TypeError("Можно складывать только объекты класса Product.")
@@ -64,8 +67,18 @@ class Product:
 
 class Smartphone(Product):
     """Класс для представления смартфона."""
-    def __init__(self, name: str, description: str, price: float, quantity: int, efficiency: float, model: str,
-                 memory: int, color: str) -> None:
+
+    def __init__(
+        self,
+        name: str,
+        description: str,
+        price: float,
+        quantity: int,
+        efficiency: float,
+        model: str,
+        memory: int,
+        color: str,
+    ) -> None:
         super().__init__(name, description, price, quantity)
         self.efficiency = efficiency
         self.model = model
@@ -75,10 +88,18 @@ class Smartphone(Product):
 
 class LawnGrass(Product):
     """Класс для представления смартфона."""
-    def __init__(self, name: str, description: str, price: float, quantity: int, country: str,
-                 germination_period: str, color: str) -> None:
+
+    def __init__(
+        self,
+        name: str,
+        description: str,
+        price: float,
+        quantity: int,
+        country: str,
+        germination_period: str,
+        color: str,
+    ) -> None:
         super().__init__(name, description, price, quantity)
         self.country = country
         self.germination_period = germination_period
         self.color = color
-

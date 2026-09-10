@@ -61,7 +61,7 @@ def test_iterate_over_smartphones() -> None:
         efficiency=98.2,
         model="15",
         memory=512,
-        color="Gray space"
+        color="Gray space",
     )
     smartphone2 = Smartphone(
         name="Samsung Galaxy S23",
@@ -71,7 +71,7 @@ def test_iterate_over_smartphones() -> None:
         efficiency=95.5,
         model="S23",
         memory=256,
-        color="Черный"
+        color="Черный",
     )
     category.add_product(smartphone1)
     category.add_product(smartphone2)
@@ -93,7 +93,7 @@ def test_iterate_over_lawn_grass() -> None:
         quantity=20,
         country="Россия",
         germination_period="7 дней",
-        color="Зеленый"
+        color="Зеленый",
     )
     lawn_grass2 = LawnGrass(
         name="Газонная трава 2",
@@ -102,7 +102,7 @@ def test_iterate_over_lawn_grass() -> None:
         quantity=15,
         country="США",
         germination_period="5 дней",
-        color="Темно-зеленый"
+        color="Темно-зеленый",
     )
     category.add_product(lawn_grass1)
     category.add_product(lawn_grass2)
