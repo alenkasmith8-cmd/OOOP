@@ -90,7 +90,7 @@ def test_smartphone_creation() -> None:
         efficiency=95.5,
         model="S23",
         memory=256,
-        color="Черный"
+        color="Черный",
     )
     assert smartphone.name == "Samsung Galaxy S23"
     assert smartphone.price == 80000.0
@@ -112,7 +112,7 @@ def test_lawn_grass_creation() -> None:
         quantity=20,
         country="Россия",
         germination_period="7 дней",
-        color="Зеленый"
+        color="Зеленый",
     )
     assert grass.name == "Газонная трава"
     assert grass.price == 500.0
@@ -134,7 +134,7 @@ def test_add_smartphones() -> None:
         efficiency=95.5,
         model="S23",
         memory=256,
-        color="Черный"
+        color="Черный",
     )
     smartphone2 = Smartphone(
         name="iPhone 14",
@@ -144,7 +144,7 @@ def test_add_smartphones() -> None:
         efficiency=98.0,
         model="14",
         memory=128,
-        color="Белый"
+        color="Белый",
     )
     total_value = smartphone1 + smartphone2
     assert total_value == (80000.0 * 10) + (70000.0 * 5)
@@ -163,7 +163,7 @@ def test_add_different_classes() -> None:
         efficiency=95.5,
         model="S23",
         memory=256,
-        color="Черный"
+        color="Черный",
     )
     grass = LawnGrass(
         name="Газонная трава",
@@ -172,7 +172,7 @@ def test_add_different_classes() -> None:
         quantity=20,
         country="Россия",
         germination_period="7 дней",
-        color="Зеленый"
+        color="Зеленый",
     )
     with pytest.raises(TypeError):
         smartphone + grass
@@ -191,7 +191,7 @@ def test_add_non_product() -> None:
         efficiency=95.5,
         model="S23",
         memory=256,
-        color="Черный"
+        color="Черный",
     )
     with pytest.raises(TypeError):
         smartphone + 100  # type: ignore

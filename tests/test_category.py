@@ -28,7 +28,9 @@ def test_category_products_property() -> None:
     product2 = Product("Product 2", "Description 2", 200.0, 5)
     category.add_product(product1)
     category.add_product(product2)
-    expected_output = "Product 1, 100.0 руб. Остаток: 10 шт.\nProduct 2, 200.0 руб. Остаток: 5 шт."
+    expected_output = (
+        "Product 1, 100.0 руб. Остаток: 10 шт.\nProduct 2, 200.0 руб. Остаток: 5 шт."
+    )
     assert category.products == expected_output
 
 
@@ -48,7 +50,7 @@ def test_empty_category() -> None:
 
 
 def test_non_empty_category() -> None:
-    """Тест создание несколько продуктов и категорий """
+    """Тест создание несколько продуктов и категорий"""
     product1 = Product("Product A", "Description", 100.0, 10)
     product2 = Product("Product B", "Description", 200.0, 5)
     product3 = Product("Product C", "Description", 300.0, 7)
@@ -75,7 +77,7 @@ def test_add_smartphone_to_category() -> None:
         efficiency=98.2,
         model="15",
         memory=512,
-        color="Gray space"
+        color="Gray space",
     )
     category.add_product(smartphone)
     assert len(category._products) == 1
@@ -92,7 +94,7 @@ def test_add_lawn_grass_to_category() -> None:
         quantity=20,
         country="Россия",
         germination_period="7 дней",
-        color="Зеленый"
+        color="Зеленый",
     )
     category.add_product(lawn_grass)
     assert len(category._products) == 1
@@ -117,7 +119,7 @@ def test_category_str_representation() -> None:
         efficiency=98.2,
         model="15",
         memory=512,
-        color="Gray space"
+        color="Gray space",
     )
     category.add_product(smartphone)
     assert str(category) == "Смартфоны, количество продуктов: 8 шт."
