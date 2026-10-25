@@ -8,7 +8,7 @@ class Category:
 
     category_count: int = 0  # Общее количество категорий
     product_count: int = 0  # Общее количество наименований товаров во всех категориях
-    total_products: int = 0  # Добавила для совместимости со скриптом проверки
+    total_products: int = 0  # Для совместимости со скриптами проверки
 
     def __init__(
         self, name: str, description: str, products: Optional[List[Product]] = None
@@ -22,11 +22,12 @@ class Category:
         """
         self.name = name
         self.description = description
-        # Делаем поверхностную копию, чтобы избежать непреднамеренной мутации извне
-        self._products: List[Product] = list(products) if products is not None else []
+        # Приватный атрибут по критериям задания
+        self.__products: List[Product] = list(products) if products is not None else []
 
         Category.category_count += 1
-        Category.product_count += len(self._products)
+        Category.product_count += len(self.__products)
+        Category.total_products = Category.product_count
 
     def add_product(self, product: Product) -> None:
         """
@@ -40,18 +41,24 @@ class Category:
                 "Можно добавлять только объекты класса Product или его наследников."
             )
 
-        self._products.append(product)
+        self.__products.append(product)
         Category.product_count += 1
+        Category.total_products = Category.product_count
+
+    @property
+    def _products(self) -> List[Product]:
+        """Внутренний доступ к списку продуктов для итератора и совместимости тестов."""
+        return self.__products
 
     @property
     def products(self) -> str:
         """Геттер для получения строкового описания продуктов."""
-        return "\n".join(str(p) for p in self._products)
+        return "\n".join(str(p) for p in self.__products)
 
     def __str__(self) -> str:
         """
         Строковое представление категории.
         Отображает суммарный остаток всех штук товаров в категории.
         """
-        total_quantity = sum(p.quantity for p in self._products)
+        total_quantity = sum(p.quantity for p in self.__products)
         return f"{self.name}, количество продуктов: {total_quantity} шт."

@@ -1,9 +1,21 @@
+from typing import Any, Dict
+
+
 class Product:
     """Класс для представления продукта."""
 
     def __init__(
         self, name: str, description: str, price: float, quantity: int
     ) -> None:
+        """
+        Инициализация объекта Product.
+
+        :param name: Название продукта.
+        :param description: Описание продукта.
+        :param price: Цена продукта.
+        :param quantity: Количество продукта в наличии.
+        :raises ValueError: Если цена или количество отрицательные.
+        """
         if price < 0:
             raise ValueError("Цена товара не может быть отрицательной")
         if quantity < 0:
@@ -11,16 +23,8 @@ class Product:
 
         self.name = name
         self.description = description
-        self.__price = price
+        self.__price = price  # Приватный атрибут цены
         self.quantity = quantity
-
-        if quantity < 0:
-            raise ValueError("Количество товара не может быть отрицательным.")
-
-        self.name = name
-        self.description = description
-        self.quantity = quantity
-        self.price = price  # Используем сеттер для единой валидации цены
 
     @property
     def price(self) -> float:
@@ -29,14 +33,17 @@ class Product:
 
     @price.setter
     def price(self, new_price: float) -> None:
-        """Сеттер для атрибута 'цена'."""
+        """
+        Сеттер для атрибута 'цена'.
+        Если цена <= 0, выводит предупреждение и не изменяет значение.
+        """
         if new_price <= 0:
             print("Цена не должна быть нулевая или отрицательная")
             return
         self.__price = new_price
 
     @classmethod
-    def new_product(cls, product_data: dict) -> "Product":
+    def new_product(cls, product_data: Dict[str, Any]) -> "Product":
         """
         Класс-метод для создания нового продукта из словаря параметров.
         Корректно работает для классов-наследников при наличии нужных ключей.
